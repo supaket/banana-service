@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: banana-ingress
+  labels:
+    kcert.dev/ingress: "managed"
+spec:
+  tls:
+  - hosts:
+    - wicha-banana.enersys.io
+    secretName: wicha-banana-tls
+  rules:
+    - host: wicha-banana.enersys.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: banana-service
+                port:
+                  number: 80
+  ingressClassName: nginx
