@@ -39,6 +39,6 @@ spec:
             - name: nfs-volume
               mountPath: /data
       volumes:
-        - name: nfs-volume
-	  persistentVolumeClaim:
-	    claimName: test-claim
+      - name: nfs-volume
+        persistentVolumeClaim:
+          claimName: test-claim
